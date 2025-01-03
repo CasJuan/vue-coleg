@@ -4,7 +4,7 @@
   <hr/>
   <CarOptions/>
   <hr/>
-  <Car :power="power" :upPower="upPower"/>
+  <Car :power="power" :upPower="upPower" @downPower="downPower"/>
 </template>
 
 <script>
@@ -28,9 +28,14 @@ export default {
       power.value++
     }
 
+    const downPower = () => {
+      power.value--;
+    }
+
     return{
       power,
       upPower,
+      downPower,
     }
   }
 };
