@@ -4,7 +4,7 @@
     <p>Modelo: {{ model }}</p>
 
     <p> Potencias : {{ power }}</p>
-    <button @click="upPower">Aumentar</button>
+    <button @click="upPower(20)">Aumentar</button>
     <button @click="downPower">Disminuir</button>
 
     <!-- <template  v-for="(power, index) in powers" :key="index">
@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import {ref} from "vue";
+
 export default {
     setup () {
         const brand = "Audi";
@@ -24,14 +26,16 @@ export default {
         const colors = ["Azul", "Rojo", "Morado", "Amarrillo"];
         const price = 45000;
         /* const powers = [60, 80 ,120, 16, 200, 280, 300, 390, 540, 500]; */
-        const power = 40;
+        let power = ref(40);
 
-        const upPower = () => {
-            console.log("Aumentar potencia...")
+        const upPower = (newPower) => {
+            console.log("Aumentar potencia...");
+            power.value = power.value + newPower;
         }
 
         const downPower = () => {
             console.log("Bajar potencia...")
+            power.value--;
         }
 
         return {
