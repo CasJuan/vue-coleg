@@ -2,21 +2,16 @@
     <h2>Coche</h2>
     <p>Marca: {{ brand }}</p>
     <p>Modelo: {{ model }}</p>
-    <p>Color: 
-        <!-- <span v-for="(color, index) in colors" :key="index" >
-            {{index}}: {{ color }} -
-        </span> -->
 
-        <ul>
-            <li span v-for="(color, index) in colors" :key="index">
-                {{index}}: {{ color }}
-            </li>
-        </ul>
+    <p> Potencias </p>
 
-    </p>
-    <p>Precio: {{ price }}</p>
-    <p>Potencia: {{ power }}</p>
-    <p>Mensaje: {{ mensaje.title }}</p>
+    <template  v-for="(power, index) in powers" :key="index">
+        <li v-if="power < 300">Urbana: {{ power }}</li>
+        <li v-else-if="power === 280">Hibrido: {{ power }}</li>
+        <li v-else>Carrera: {{ power }}</li>
+    </template>
+
+
 </template>
 
 <script>
@@ -26,19 +21,14 @@ export default {
         const model = "A4";
         const colors = ["Azul", "Rojo", "Morado", "Amarrillo"];
         const price = 45000;
-        const powr = 240;
-        const mensaje = {
-            title: "Estoy bien",
-            text: "Welcome",
-        }
+        const powers = [60, 80 ,120, 16, 200, 280, 300, 390, 540, 500];
 
         return {
             brand,
             model,
             colors,
             price,
-            powr,
-            mensaje,
+            powers,
         };
     },
 
