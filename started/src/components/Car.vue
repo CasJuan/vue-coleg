@@ -2,7 +2,18 @@
     <h2>Coche</h2>
     <p>Marca: {{ brand }}</p>
     <p>Modelo: {{ model }}</p>
-    <p>Color: {{ color[1] }}</p>
+    <p>Color: 
+        <!-- <span v-for="(color, index) in colors" :key="index" >
+            {{index}}: {{ color }} -
+        </span> -->
+
+        <ul>
+            <li span v-for="(color, index) in colors" :key="index">
+                {{index}}: {{ color }}
+            </li>
+        </ul>
+
+    </p>
     <p>Precio: {{ price }}</p>
     <p>Potencia: {{ power }}</p>
     <p>Mensaje: {{ mensaje.title }}</p>
@@ -10,23 +21,10 @@
 
 <script>
 export default {
-    /* data (){
-        return{
-            brand:"Audi",
-            model: "A4",
-            color: ["Azul", "Rojo", "Verde"],
-            price: 38000,
-            power: 180,
-            mensaje:{
-                title: "Hola mundo",
-                text: "Adios",
-            }
-        };
-    }, */
     setup () {
         const brand = "Audi";
         const model = "A4";
-        const color = ["Azul", "Rojo", "Morado"];
+        const colors = ["Azul", "Rojo", "Morado", "Amarrillo"];
         const price = 45000;
         const powr = 240;
         const mensaje = {
@@ -37,7 +35,7 @@ export default {
         return {
             brand,
             model,
-            color,
+            colors,
             price,
             powr,
             mensaje,
