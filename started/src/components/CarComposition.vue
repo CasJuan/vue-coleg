@@ -1,16 +1,18 @@
 <template>
-    <h2>Coche</h2>
+    <h2>Coche - Composition API</h2>
     <p>Marca: {{ brand }}</p>
     <p>Modelo: {{ model }}</p>
 
-    <p> Potencias </p>
+    <p> Potencias : {{ power }}</p>
+    <button @click="upPower">Aumentar</button>
+    <button @click="downPower">Disminuir</button>
 
-    <template  v-for="(power, index) in powers" :key="index">
+    <!-- <template  v-for="(power, index) in powers" :key="index">
         <li v-if="power < 300">Urbana: {{ power }}</li>
         <li v-else-if="power === 280">Hibrido: {{ power }}</li>
         <li v-else>Carrera: {{ power }}</li>
     </template>
-
+ -->
 
 </template>
 
@@ -21,14 +23,25 @@ export default {
         const model = "A4";
         const colors = ["Azul", "Rojo", "Morado", "Amarrillo"];
         const price = 45000;
-        const powers = [60, 80 ,120, 16, 200, 280, 300, 390, 540, 500];
+        /* const powers = [60, 80 ,120, 16, 200, 280, 300, 390, 540, 500]; */
+        const power = 40;
+
+        const upPower = () => {
+            console.log("Aumentar potencia...")
+        }
+
+        const downPower = () => {
+            console.log("Bajar potencia...")
+        }
 
         return {
             brand,
             model,
             colors,
             price,
-            powers,
+            power,
+            upPower,
+            downPower,
         };
     },
 
