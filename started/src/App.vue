@@ -4,10 +4,12 @@
   <hr/>
   <CarOptions/>
   <hr/>
-  <Car :power="power"/>
+  <Car :power="power" :upPower="upPower"/>
 </template>
 
 <script>
+import {ref} from 'vue';
+
 import Car from "./components/Car.vue";
 import CarComposition from "./components/CarComposition.vue";
 import CarOptions from "./components/CarOptions.vue";
@@ -19,10 +21,16 @@ export default {
     Car
   },
   setup(){
-    let power = 38;
+    let power = ref(36);
+
+    const upPower = () => {
+      console.log("Aumentar power");
+      power.value++
+    }
 
     return{
       power,
+      upPower,
     }
   }
 };
